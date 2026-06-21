@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="template1">
+      layout:decorate="~{template1}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -25,8 +25,10 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>ID</th><th>Nom</th><th>Date</th><th>Malade</th><th>Score</th>
+                            <th>ID</th><th>Nom</th><th>Date</th><th>Malade</th><th>Score</th><th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <tr th:each="p:${listPatients}">
                             <td th:text="${p.id}"></td>
                             <td th:text="${p.nom}"></td>
@@ -37,7 +39,7 @@
                                 <a onclick="return confirm('Etes vous sure?')" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
-                        </thead>
+                        </tbody>
                     </table>
                     <ul class="nav nav-pills">
                         <li th:each="page,status:${pages}">
